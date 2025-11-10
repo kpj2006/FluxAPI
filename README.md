@@ -7,7 +7,43 @@ A modern, blockchain-powered marketplace for AI APIs with Solana payment integra
 ![Solana](https://img.shields.io/badge/Solana-Blockchain-14F195?style=for-the-badge&logo=solana)
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 
-## 🌟 Features
+## � Problem Statement
+
+In today's rapidly evolving AI landscape, developers face significant challenges:
+
+- **Fragmented API Discovery**: AI developers struggle to find reliable, production-ready APIs scattered across different platforms
+- **Complex Monetization**: API creators lack simple, secure ways to monetize their APIs with transparent payment systems
+- **Payment Friction**: Traditional payment methods involve high fees, slow processing, and complex integration for API usage
+
+## 💡 Our Solution
+
+**FluxAPI** revolutionizes the API marketplace ecosystem by introducing:
+
+### 🚀 **Decentralized Marketplace**
+A unified platform where AI developers can discover, list, and integrate APIs instantly. No middlemen, no excessive fees—just direct connections between API creators and consumers.
+
+### 💰 **Blockchain-Powered Payments**
+Leveraging Solana's high-speed, low-cost blockchain with USDC stablecoin payments:
+- **Instant Settlements**: Payments confirmed in seconds, not days
+- **Minimal Fees**: ~$0.00025 per transaction vs 2-3% traditional fees
+- **Transparent**: Every transaction verifiable on-chain
+- **Global**: No geographic restrictions or currency conversions
+
+### 🔐 **Trustless Verification**
+Smart payment verification ensures:
+- Automatic transaction validation on Solana blockchain
+- No chargebacks or payment disputes
+- Guaranteed payment before API access
+- Immutable payment records
+
+### 📊 **Real-Time Analytics**
+Comprehensive dashboards for both API providers and consumers:
+- Track usage patterns and earnings in real-time
+- Monitor API performance and uptime
+- Data-driven insights for optimization
+- Transparent fee structure
+
+## �🌟 Features
 
 - **🚀 API Marketplace** - Browse, list, and discover AI-powered APIs
 - **💰 Blockchain Payments** - Solana-based USDC payments for API usage
@@ -18,117 +54,10 @@ A modern, blockchain-powered marketplace for AI APIs with Solana payment integra
 - **🔗 IPFS Integration** - Decentralized storage for API metadata
 - **💳 Wallet Integration** - Phantom & Solana wallet support
 
-## �️ Architecture Diagram
+## 🏛️ Architecture Diagram
+![FluxAPI Architecture](./assets/diagram-export-11-11-2025-02_07_22.png)
 
-```mermaid
-graph TB
-    subgraph "Frontend Layer"
-        A[Next.js 15 App]
-        A1[Landing Page]
-        A2[Marketplace]
-        A3[Add API Form]
-        A4[API Details]
-        A5[Analytics Dashboard]
-        A --> A1
-        A --> A2
-        A --> A3
-        A --> A4
-        A --> A5
-    end
-
-    subgraph "User Interface"
-        B[Solana Wallet]
-        B1[Phantom/Solflare]
-        B --> B1
-    end
-
-    subgraph "Backend Layer"
-        C[x402-handler API]
-        C1[Express Server]
-        C2[Payment Handler]
-        C3[API Key Generator]
-        C4[Transaction Verifier]
-        C --> C1
-        C1 --> C2
-        C1 --> C3
-        C1 --> C4
-    end
-
-    subgraph "Blockchain Layer"
-        D[Solana Network]
-        D1[USDC Token]
-        D2[SPL Token Program]
-        D3[Transaction History]
-        D --> D1
-        D --> D2
-        D --> D3
-    end
-
-    subgraph "Storage Layer"
-        E[IPFS via Pinata]
-        F[MongoDB Atlas]
-        E1[API Metadata]
-        F1[Listings DB]
-        F2[Analytics DB]
-        F3[Earnings DB]
-        E --> E1
-        F --> F1
-        F --> F2
-        F --> F3
-    end
-
-    subgraph "External APIs"
-        G[Third-party APIs]
-        G1[API Provider 1]
-        G2[API Provider 2]
-        G3[API Provider N]
-        G --> G1
-        G --> G2
-        G --> G3
-    end
-
-    %% Frontend to Backend
-    A2 -->|Fetch Listings| C1
-    A3 -->|Submit API| C1
-    A4 -->|Get Details| E1
-    A5 -->|Get Analytics| C1
-    
-    %% Wallet Integration
-    B1 -->|Connect Wallet| A
-    B1 -->|Sign Transaction| D
-    
-    %% Backend to Storage
-    C1 -->|Store Metadata| E
-    C1 -->|Query/Update| F
-    
-    %% Backend to Blockchain
-    C2 -->|Verify Payment| D3
-    C4 -->|Check Transaction| D
-    C2 -->|Transfer USDC| D1
-    
-    %% Payment Flow
-    A4 -->|1. Get Payment Info| C2
-    B1 -->|2. Send USDC| D1
-    A4 -->|3. Submit Signature| C4
-    C4 -->|4. Verify on-chain| D3
-    C1 -->|5. Call API| G
-    G -->|6. Return Response| A4
-    
-    %% Earnings Flow
-    C1 -->|Track Usage| F2
-    C1 -->|Update Earnings| F3
-    A5 -->|Claim Earnings| C2
-    C2 -->|Transfer to Owner| D1
-
-    style A fill:#a855f7,stroke:#7c3aed,stroke-width:3px,color:#fff
-    style C fill:#14b8a6,stroke:#0d9488,stroke-width:3px,color:#fff
-    style D fill:#fbbf24,stroke:#f59e0b,stroke-width:3px,color:#000
-    style E fill:#8b5cf6,stroke:#7c3aed,stroke-width:2px,color:#fff
-    style F fill:#06b6d4,stroke:#0891b2,stroke-width:2px,color:#fff
-    style G fill:#10b981,stroke:#059669,stroke-width:2px,color:#fff
-```
-
-## �🏗️ Project Structure
+## �️ Project Structure
 
 ```
 FluxAPI/
